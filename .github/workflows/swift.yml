@@ -59,6 +59,7 @@ jobs:
                      -scheme DemoSwiftUI \
                      -sdk iphoneos \
                      -configuration Release \
+                     -archivePath $RUNNER_TEMP/DemoSwiftUI.xcarchive \
                      build
         # Export IPA
       - name: Export IPA
