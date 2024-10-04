@@ -81,10 +81,10 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: DemoSwiftUI-ipa
-          path: $RUNNER_TEMP/*.ipa
+          path: $RUNNER_TEMP/DemoSwiftUI.ipa
       - name: Delete IPA after upload
         run: |
-          rm -f $RUNNER_TEMP/*.ipa
+          rm -f $RUNNER_TEMP/DemoSwiftUI.ipa
        # Upload to testflight
      # - name: Upload to TestFlight with altool
       #  env:
