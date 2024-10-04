@@ -74,8 +74,8 @@ jobs:
       - name: Upload IPA as Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: DemoSwiftUI-ipa
-          path: $RUNNER_TEMP/DemoSwiftUI.ipa
+          name: DemoSwiftUI.ipa
+          path: /Users/runner/work/_temp/DemoSwiftUI.ipa
 
       - name: Clean up keychain and provisioning profile
         if: ${{ always() }}
