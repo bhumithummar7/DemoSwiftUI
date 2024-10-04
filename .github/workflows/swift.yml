@@ -72,13 +72,11 @@ jobs:
                      -archivePath $RUNNER_TEMP/DemoSwiftUI.xcarchive \
                      -exportOptionsPlist ExportOptions.plist \
                      -exportPath $RUNNER_TEMP
-      - name: Check Node.js version
-        run: node -v
       - name: List files in $RUNNER_TEMP
         run: ls -la $RUNNER_TEMP
        # Upload IPA as an artifact
       - name: Upload IPA as Artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: DemoSwiftUI-ipa
           path: $RUNNER_TEMP/DemoSwiftUI.ipa
