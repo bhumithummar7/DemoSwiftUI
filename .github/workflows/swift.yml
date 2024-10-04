@@ -52,6 +52,8 @@ jobs:
                      -sdk iphoneos \
                      -configuration Release \
                      -archivePath $RUNNER_TEMP/DemoSwiftUI.xcarchive \
+                      archive -verbose
+
 
       - name: Verify Archive Exists
         run: ls $RUNNER_TEMP/DemoSwiftUI.xcarchive
