@@ -53,12 +53,25 @@ jobs:
            gem install cocoapods
            pod install
       # Archieve build
-      - name: Build the app
+      - name: Build Archieve 
         run: |
           xcodebuild -workspace DemoSwiftUI.xcworkspace \
                      -scheme DemoSwiftUI \
                      -sdk iphoneos \
                      -configuration Release \
                      build
-
+        # Export IPA
+      - name: Export IPA
+        run: |
+          xcodebuild -exportArchive \
+                     -archivePath $RUNNER_TEMP/DemoSwiftUI.xcarchive \
+                     -exportOptionsPlist ExportOptions.plist \
+                     -exportPath $RUNNER_TEMP
+       # Clean up keychain and provisioning profile
+      - name: Clean up keychain and provisioning profile
+        if: ${{ always() }}
+        run: |
+          security delete-keychain $RUNNER_TEMP/app-signing.keychain-db
+          rm ~/Library/MobileDevice/Provisioning\ Profiles/build_pp.mobileprovision
+            
 
