@@ -72,6 +72,12 @@ jobs:
                      -archivePath $RUNNER_TEMP/DemoSwiftUI.xcarchive \
                      -exportOptionsPlist ExportOptions.plist \
                      -exportPath $RUNNER_TEMP
+       # Upload IPA as an artifact
+      - name: Upload IPA as Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: DemoSwiftUI-ipa
+          path: $RUNNER_TEMP/*.ipa
        # Upload to testflight
      # - name: Upload to TestFlight with altool
       #  env:
