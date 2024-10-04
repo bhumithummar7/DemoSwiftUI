@@ -63,10 +63,27 @@ jobs:
         # Export IPA
       - name: Export IPA
         run: |
-          xcodebuild -exportArchive \
-                     -archivePath $RUNNER_TEMP/DemoSwiftUI.xcarchive \
-                     -exportOptionsPlist ExportOptions.plist \
-                     -exportPath $RUNNER_TEMP
+           xcodebuild -exportArchive \
+               -archivePath $RUNNER_TEMP/DemoSwiftUI.xcarchive \
+               -exportPath $RUNNER_TEMP \
+               -allowProvisioningUpdates
+
+      # Need to add ExportOptions.plist
+      # xcodebuild -exportArchive \
+       #              -archivePath $RUNNER_TEMP/DemoSwiftUI.xcarchive \
+       #              -exportOptionsPlist ExportOptions.plist \
+        #             -exportPath $RUNNER_TEMP
+       # Upload to testflight
+     # - name: Upload to TestFlight with altool
+      #  env:
+      #    APP_STORE_CONNECT_USERNAME: ${{ secrets.APP_STORE_CONNECT_USERNAME }}
+      #    APP_STORE_CONNECT_PASSWORD: ${{ secrets.APP_STORE_CONNECT_PASSWORD }}
+      #  run: |
+      #    xcrun altool --upload-app \
+       #   --type ios \
+       #   --file $RUNNER_TEMP/DemoSwiftUI.ipa \
+       #   --username "$APP_STORE_CONNECT_USERNAME" \
+       #   --password "$APP_STORE_CONNECT_PASSWORD"
        # Clean up keychain and provisioning profile
       - name: Clean up keychain and provisioning profile
         if: ${{ always() }}
